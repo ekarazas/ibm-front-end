@@ -1,11 +1,13 @@
 $primary: #234d5f;
-$secondary: #978d49;
+$secondary: #c7af13;
 $danger: #a22c29;
 $dark: #0d0f06;
 $light: #e2e7e6;
 
 $display-font-family: "Zen Tokyo Zoo", cursive;
 $primary-font-family: "Poppins", sans-serif;
+
+$main-margin: 1rem;
 
 $theme-colors: (
   "primary": $primary,
@@ -35,6 +37,14 @@ header h1 {
   font-family: $display-font-family;
   font-size: 5rem;
   margin: 0;
+}
+
+form {
+  margin: $main-margin 0;
+}
+
+.alert {
+  margin-top: $main-margin;
 }
 
 @media only screen and (max-width: 765px) {
