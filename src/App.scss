@@ -47,6 +47,15 @@ form {
   margin-top: $main-margin;
 }
 
+.card-img-top {
+  height: 12rem;
+  object-fit: cover;
+}
+
+.card-body {
+  color: $dark;
+}
+
 .description {
   display: -webkit-box;
   -webkit-line-clamp: 3;

@@ -1,12 +1,9 @@
 import React from "react";
-import { Form, InputGroup, Button, Alert } from "react-bootstrap";
+import { Form, InputGroup, Button } from "react-bootstrap";
 
 const Search = () => {
   return (
     <>
-      <Alert variant="danger" className="alert">
-        Oh no error
-      </Alert>
       <Form>
         <InputGroup className="mb-3">
           <Form.Control
