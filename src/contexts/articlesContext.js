@@ -16,7 +16,8 @@ const ArticlesProvider = ({ children }) => {
         console.log(data);
         setData(data.articles);
         setOriginalData(data.articles);
-      });
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   return (

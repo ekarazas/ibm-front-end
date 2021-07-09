@@ -15,19 +15,68 @@ const App = () => {
 
   useEffect(() => setData(articlesContext.data), [articlesContext.data]);
 
+  //search functionality
+  const submitHandle = (e) => {
+    e.preventDefault();
+    const searchInput = e.target.elements.search.value.trim().toLowerCase();
+    if (searchInput.length <= 40) {
+      articlesContext.setData(
+        articlesContext.data
+          .filter((article) =>
+            article.title.toLowerCase().includes(searchInput)
+          )
+          .slice(0, 9)
+      );
+      const keywords = searchInput;
+      fetch("http://localhost:8080/search", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ keywords }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error));
+    }
+  };
+
+  // searchValidation
+  const [searchValid, setSearchValid] = useState(true);
+
+  const searchValidation = (e) => {
+    const pattern = "^[a-zA-Z0-9/s]*$";
+    setSearchValid(
+      e.target.value.length !== 0
+        ? e.target.value.match(pattern)
+          ? true
+          : false
+        : true
+    );
+
+    const key = e.keyCode;
+    if (key === 8 || key === 46) {
+      articlesContext.setData(articlesContext.originalData);
+    }
+  };
+
   return (
     <>
       <header>
         <h1>GNews</h1>
       </header>
       <Container fluid="md">
-        <Search />
+        {searchValid === false && (
+          <Alert variant="danger">Use letters and numbers only</Alert>
+        )}
+        <Search
+          submitHandle={submitHandle}
+          searchValidation={searchValidation}
+        />
+        {data && data.length === 0 && (
+          <Alert variant="secondary">There is no articles at the moment</Alert>
+        )}
         <Row>
-          {data && data.length === 0 && (
-            <Alert variant="secondary">
-              There is no articles at the moment
-            </Alert>
-          )}
           <CardGroup>
             {data &&
               data.map((article) => (
