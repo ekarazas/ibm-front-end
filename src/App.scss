@@ -47,6 +47,15 @@ form {
   margin-top: $main-margin;
 }
 
+.card {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
 .card-img-top {
   height: 12rem;
   object-fit: cover;
@@ -61,6 +70,13 @@ form {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.center-loading {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 765px) {

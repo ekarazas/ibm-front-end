@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Container, Row, CardGroup, Alert } from "react-bootstrap";
+import PulseLoader from "react-spinners/PulseLoader";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.scss";
 
@@ -15,7 +16,7 @@ const App = () => {
 
   useEffect(() => setData(articlesContext.data), [articlesContext.data]);
 
-  //search functionality
+  //search functionality and logging
   const submitHandle = (e) => {
     e.preventDefault();
     const searchInput = e.target.elements.search.value.trim().toLowerCase();
@@ -76,21 +77,31 @@ const App = () => {
         {data && data.length === 0 && (
           <Alert variant="secondary">There is no articles at the moment</Alert>
         )}
-        <Row>
-          <CardGroup>
-            {data &&
-              data.map((article) => (
-                <ArticleCard
-                  key={article.url}
-                  image={article.image}
-                  title={article.title}
-                  description={article.description}
-                  publishedAt={article.publishedAt}
-                  url={article.url}
-                />
-              ))}
-          </CardGroup>
-        </Row>
+        {articlesContext.isLoading ? (
+          <div className="center-loading">
+            <PulseLoader
+              color={"#234d5f"}
+              loading={articlesContext.isLoading}
+              size={30}
+            />
+          </div>
+        ) : (
+          <Row>
+            <CardGroup>
+              {data &&
+                data.map((article) => (
+                  <ArticleCard
+                    key={article.url}
+                    image={article.image}
+                    title={article.title}
+                    description={article.description}
+                    publishedAt={article.publishedAt}
+                    url={article.url}
+                  />
+                ))}
+            </CardGroup>
+          </Row>
+        )}
       </Container>
     </>
   );
