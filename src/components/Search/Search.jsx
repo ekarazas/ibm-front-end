@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Form, InputGroup } from "react-bootstrap";
 import MainButton from "../Button/Button";
 
@@ -23,6 +24,11 @@ const Search = ({ submitHandle, searchValidation }) => {
       </Form>
     </>
   );
+};
+
+Search.propTypes = {
+  submitHandle: PropTypes.func.isRequired,
+  searchValidation: PropTypes.func.isRequired,
 };
 
 export default Search;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Col, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -34,6 +35,14 @@ const ArticleCard = ({ image, title, description, publishedAt, url }) => {
       </Card>
     </Col>
   );
+};
+
+ArticleCard.propTypes = {
+  image: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default ArticleCard;
