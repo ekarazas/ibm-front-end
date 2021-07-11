@@ -2,17 +2,22 @@ import React from "react";
 import { Form, InputGroup } from "react-bootstrap";
 import MainButton from "../Button/Button";
 
-const Search = ({ submitHandle, searchValidation }) => {
+import Search from "./Search";
+
+export default {
+  title: "Components/Forms",
+  component: Search,
+};
+
+export const SearchField = () => {
   return (
     <>
-      <Form onSubmit={submitHandle}>
-        <InputGroup className="mb-3">
+      <Form>
+        <InputGroup>
           <Form.Control
             placeholder="Search..."
             name="search"
             className="shadow-none"
-            maxLength={40}
-            onKeyUp={searchValidation}
           />
           <InputGroup.Append>
             <MainButton type="submit" variant="primary">
@@ -24,5 +29,3 @@ const Search = ({ submitHandle, searchValidation }) => {
     </>
   );
 };
-
-export default Search;

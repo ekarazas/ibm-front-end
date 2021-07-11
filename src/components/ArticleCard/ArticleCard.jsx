@@ -7,7 +7,7 @@ const ArticleCard = ({ image, title, description, publishedAt, url }) => {
   const logClickedArticle = () => {
     window.open(url, "_blank");
 
-    fetch("http://localhost:8080/articles", {
+    fetch("http://localhost:8080/v1/logging/articles", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -29,7 +29,7 @@ const App = () => {
           .slice(0, 9)
       );
       const keywords = searchInput;
-      fetch("http://localhost:8080/search", {
+      fetch("http://localhost:8080/v1/logging/search", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

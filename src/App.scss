@@ -17,6 +17,10 @@ $theme-colors: (
   "light": $light,
 );
 
+#root {
+  font-family: $primary-font-family;
+}
+
 header {
   background: linear-gradient(
       to left top,
